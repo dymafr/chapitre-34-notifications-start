@@ -1,3 +1,4 @@
+import { NotificationService } from './../../services/notification.service';
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { State } from '../../store';
@@ -15,7 +16,8 @@ export class TopbarComponent implements OnInit {
   public isLoggedin$: Observable<boolean>;
 
   constructor(
-    private store: Store<State>
+    private store: Store<State>,
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit() {
@@ -31,6 +33,10 @@ export class TopbarComponent implements OnInit {
 
   public logout(): void {
     this.store.dispatch(new Logout());
+  }
+
+  public offerNotifications() {
+    this.notificationService.offerNotifications();
   }
 
 

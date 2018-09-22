@@ -1,3 +1,4 @@
+import { NotificationService } from './../share/services/notification.service';
 import { SwUpdate } from '@angular/service-worker';
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
@@ -18,7 +19,8 @@ export class PhotosComponent implements OnInit {
 
   constructor(
     private store: Store<State>,
-    private swUpdate: SwUpdate
+    private swUpdate: SwUpdate,
+    private notificationService: NotificationService
   ) { 
 
     this.swUpdate.available.subscribe( (version) => {
@@ -40,5 +42,10 @@ export class PhotosComponent implements OnInit {
     this.photos$.subscribe( res => {
     });
   }
+
+  public sendNotification() {
+    this.notificationService.sendTestNotification();
+  }
+
 
 }

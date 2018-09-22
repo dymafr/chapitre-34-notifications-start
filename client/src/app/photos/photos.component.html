@@ -1,3 +1,4 @@
 <div style="margin-top:60px;" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="15px" >
+  <span (click)="sendNotification()">send notification</span>
   <img *ngFor="let photo of (photos$ | async)" [src]="photo.url"/>
 </div>
